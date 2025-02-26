@@ -11,4 +11,9 @@ class Comment extends Model
         'comment',
         'publish_date'
     ];
+
+    public function user()
+{
+    return $this->belongsTo(User::class);
+}
 }

@@ -70,4 +70,10 @@ class UserController extends Controller
 
         return redirect()->route('login');
     }
+
+    public function logout(){
+        Auth::logout(); 
+        return view('registerform');
+    }
+
 }

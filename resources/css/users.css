@@ -86,12 +86,6 @@ h1 {
 }
 
 
-form {
-    display: inline; 
-    margin: 0;
-    padding: 0;
-}
-
 .btn-primary {
     background-color: blue;
     color: white;
@@ -148,4 +142,44 @@ form {
     color: white;
     text-decoration: none;
     font-size: large;
+}
+
+form {
+    border: 2px solid black;
+    background: linear-gradient(to right, rgb(118, 118, 244), rgb(80, 80, 236));
+    color: white;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    width: 450px;
+    height: 450px;
+    padding: 20px 20px 10px 10px;
+    border-radius: 2%;
+    justify-content: center;
+    margin: 0; 
+}
+
+input {
+    border: 2px solid black;
+    width: 250px;
+    height: 20px;
+}
+
+label {
+    font-size: x-large;
+}
+
+.formcomment {
+    border: 2px solid black;
+    background: linear-gradient(to right, rgb(118, 118, 244), rgb(80, 80, 236));
+    color: white;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    width: 450px;
+    height: 300px;
+    padding: 20px 20px 10px 10px;
+    border-radius: 2%;
+    justify-content: center;
+    margin: 0; 
 }

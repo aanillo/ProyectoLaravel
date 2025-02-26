@@ -10,16 +10,17 @@
     <h1>APP</h1>
     <nav>
         <ul>
-            <li><a>Volver a HOME</a></li>
+            <li><a href="{{ route('home') }}">Inicio</a></li>
             <li><a>Ver todos mis posts</a></li>
             <li><a>Eliminar mi cuenta</a></li>
         </ul>
     </nav>
 </header>
 <body>
-<h1>INSERTAR POST</h1>
+
 
 <form action="{{ route('posts.store') }}" method="POST">
+    <h1>INSERTAR POST</h1>
     @csrf
     <label for="title">Título:</label>
     <input type="text" name="title" id="title" required>

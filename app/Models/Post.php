@@ -19,4 +19,10 @@ class Post extends Model
     protected $casts = [
         'publish_date' => 'datetime',
     ];
+
+    // En el modelo Post.php
+    public function user(){
+        return $this->belongsTo(User::class, 'belongs_to');
+    }
+
 }

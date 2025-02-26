@@ -44,17 +44,38 @@ class PostController extends Controller
             $post->delete();
         }
 
-        return redirect()->route('posts.index'); // Redirigir después de eliminar
+        return redirect()->route('home'); 
     }
 
-    public function index() {
-        $posts = Post::orderByDesc('publish_date')->get(); // Obtener los posts
-        return view('principal', compact('posts')); // Pasar los posts a la vista
-    }
 
-    public function show($id) {
-        $post = Post::findOrFail($id);
-        return view('post.show', compact('post'));
+    public function show() {
+        $posts = Post::orderByDesc('publish_date')->get(); 
+        return view('formposts', compact('posts'));
     }
+    
+    // En tu controlador PostController
+
+public function like($id)
+{
+    $post = Post::findOrFail($id);
+    $post->increment('n_likes'); // Incrementa el número de likes
+    return response()->json([
+        'n_likes' => $post->n_likes // Devuelve el nuevo número de likes
+    ]);
+}
+
+// app/Http/Controllers/PostController.php
+
+public function incrementLikes($id)
+{
+    $post = Post::findOrFail($id);
+    $post->n_likes += 1; 
+    $post->save(); 
+
+    return response()->json([
+        'n_likes' => $post->n_likes
+    ]);
+}
+
 }
 

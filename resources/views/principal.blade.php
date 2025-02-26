@@ -11,7 +11,7 @@
     <nav>
         <ul>
             <li><a href="{{ route('posts.insert') }}">Añadir post</a></li>
-            <li><a>Ver todos mis posts</a></li>
+            <li><a href="{{ route('logout') }}">Cerrar sesión</a></li>
             <li><a>Eliminar mi cuenta</a></li>
         </ul>
     </nav>
@@ -20,32 +20,35 @@
     <div class="container">
         <h1>Todos los Posts</h1>
 
-        {{-- Asegurar que $posts está definido --}}
+        {{-- Asegurarse que $posts está definido --}}
         @if (isset($posts) && $posts->isNotEmpty())
-            @foreach ($posts as $p)
+            @foreach ($posts as $post)
                 <div class="post-card">
                     <div class="post-header">
-                        <h3>{{ $p->title }}</h3>
-                        <p class="post-date">{{ $p->publish_date->format('d M Y H:i') }}</p>
+                        <p><strong>Publicado por:</strong> {{ $post->user->name }}</p>
+                        <h3>{{ $post->title }}</h3>
+                        <p class="post-date">{{ $post->publish_date->format('d M Y H:i') }}</p>
                     </div>
                     
                     <div class="post-body">
-                        <p>{{ $p->description }}</p>
-                        @if ($p->image)
-                            <img src="{{ $p->image }}" alt="Post image" class="post-image">
+                        <p>{{ $post->description }}</p>
+                        @if ($post->image)
+                            <img src="{{ $post->image }}" alt="Post image" class="post-image">
                         @endif
                     </div>
                     
                     <div class="post-footer">
-                        <span class="likes-count">{{ $p->n_likes }} Likes</span>
-    
+                        {{-- Botón de "like" con el número de likes dentro --}}
+                        <button class="btn btn-success" id="like-button-{{ $post->id }}" onclick="incrementLikes({{ $post->id }})">
+                            Likes: <span id="like-count-{{ $post->id }}">{{ $post->n_likes }}</span>
+                        </button>
 
                         {{-- Enlace para ver el post completo --}}
-                        <a href="{{ route('posts.show', ['id' => $p->id]) }}" class="btn btn-primary">Ver Post</a>
+                        <a href="{{ route('comments.show', ['id' => $post->id]) }}" class="btn btn-primary">Comentar</a>
 
                         {{-- Eliminar post solo si pertenece al usuario logueado --}}
-                        @if (auth()->id() === $p->belongs_to)
-                            <form action="{{ route('posts.delete', ['id' => $p->id]) }}" method="POST" style="display:inline;">
+                        @if (auth()->id() === $post->user_id)
+                            <form action="{{ route('posts.delete', ['id' => $post->id]) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Eliminar</button>
@@ -59,6 +62,21 @@
             <p>No se han encontrado posts.</p>
         @endif
     </div>
+    <script>
+        // Función para incrementar los likes al hacer clic en el botón
+        function incrementLikes(postId) {
+            // Obtén el elemento del contador de likes
+            const likeCountElement = document.getElementById('like-count-' + postId);
+            
+            // Obtén el valor actual de likes y conviértelo en un número
+            let currentLikes = parseInt(likeCountElement.textContent);
+            
+            // Incrementa el número de likes
+            currentLikes += 1;
+            
+            // Actualiza el texto del contador de likes
+            likeCountElement.textContent = currentLikes;
+        }
+    </script>
 </body>
-
 </html>

@@ -8,7 +8,7 @@
 </head>
 <body>
     <form action="{{ route('users.doLogin') }}" method="post">
-        <h1>REGISTRO DE USUARIO</h1>
+        <h1>LOGIN</h1>
         @csrf
         <label for="email">Email</label>
         <input type="email" name="email" id="email"><br>
