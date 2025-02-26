@@ -18,25 +18,25 @@ class UserController extends Controller
 
     // Procesar login
     public function doLogin(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            "email" => "required|email:rfc,dns|exists:users,email",
-            "password" => "required",
-        ]);
+{
+    $validator = Validator::make($request->all(), [
+        "email" => "required|email:rfc,dns|exists:users,email",
+        "password" => "required",
+    ]);
 
-        if ($validator->fails()) {
-            return redirect()->route('login')->withErrors($validator)->withInput();
-        }
-
-        $credentials = $request->only('email', 'password');
-        
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-            return view('principal', compact('user'));
-        }
-
-        return redirect()->route('login')->withErrors(['credentials' => 'Credenciales incorrectas'])->withInput();
+    if ($validator->fails()) {
+        return redirect()->route('login')->withErrors($validator)->withInput();
     }
+
+    $credentials = $request->only('email', 'password');
+
+    if (Auth::attempt($credentials)) {
+        // Redirige a la URL a la que intentaba acceder antes o, si no hay, a /home
+        return redirect()->intended('/home');
+    }
+
+    return redirect()->route('login')->withErrors(['credentials' => 'Credenciales incorrectas'])->withInput();
+}
 
     // Mostrar formulario de registro
     public function showRegister()

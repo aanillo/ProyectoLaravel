@@ -1,31 +1,154 @@
+/* Estilos generales */
 body {
     background-image: url('../../public/img/fondo.jpg');
     background-repeat: no-repeat;
     background-size: cover; 
+    margin: 0; 
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Asegura centrado vertical */
+    align-items: center; /* Centra horizontalmente */
+    margin-top: 120px; 
+    text-align: center;
 }
 
-form {
-    border: 2px solid black;
-    background: linear-gradient(to right, rgb(118, 118, 244), rgb(80, 80, 236));
-    color: white;
-    display: flex; 
-    flex-direction: column; 
+/* Contenedor de los posts */
+.container {
+    width: 60%;
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Centrar el título */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Post individual */
+.post-card {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Centra todos los elementos dentro del post */
+}
+
+/* Cabecera del post */
+.post-header {
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos estén en columna */
     align-items: center;
-    width: 450px;
-    height: 450px;
-    padding: 20px 20px 10px 10px;
-    border-radius: 2%;
+}
+
+/* Título y fecha centrados */
+.post-header h3,
+.post-header .post-date {
+    margin: 5px 0;
+}
+
+
+/* Texto del post */
+/* Texto del post */
+.post-body p {
+    font-size: 16px;
+    text-align: center; /* Centra el texto dentro del párrafo */
+}
+
+
+/* Imagen del post */
+.post-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    max-height: 200px;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+/* Pie del post */
+.post-footer {
+    display: flex;
+    justify-content: center; /* Centra los elementos del pie */
+    align-items: center;
+    gap: 10px; /* Espaciado entre botones */
+    margin-top: 10px;
+}
+
+/* Botones */
+.btn {
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* Botón de eliminar */
+form {
+    display: inline; /* Evita que el botón esté dentro de un cuadro grande */
+    margin: 0;
+    padding: 0;
+}
+
+.btn-primary {
+    background-color: blue;
+    color: white;
+}
+
+.btn-danger {
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* HEADER */
+.header {
+    background-color: rgb(80, 80, 236);
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding: 15px 0;
+}
+
+/* Título del header */
+.header h1 {
+    margin: 0;
+    text-align: center;
+}
+
+/* Navegación */
+.header nav {
+    width: 100%;
+    display: flex;
     justify-content: center;
-    margin-left: 35%;
-    margin-top: 5%;
+    margin-top: 10px;
 }
 
-input {
-    border: 2px solid black;
-    width: 250px;
-    height: 20px;
+.header nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    gap: 50px;
 }
 
-label {
-    font-size: x-large;
+.header nav ul li {
+    display: inline;
+}
+
+.header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: large;
 }

@@ -4,62 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite(['resources/css/users.css'])
-    <title>All Posts</title>
+    <title>Página principal</title>
 </head>
+<header class="header">
+    <h1>APP</h1>
+    <nav>
+        <ul>
+            <li><a>Añadir post</a></li>
+            <li><a>Ver todos mis posts</a></li>
+            <li><a>Eliminar mi cuenta</a></li>
+        </ul>
+    </nav>
+</header>
 <body>
     <div class="container">
-        <h1>All Posts</h1>
-        
-        
-        @foreach($posts as $post)
-            <div class="post-card">
-                <div class="post-header">
-                    <h2><a href="{{ route('post.show', $post->id) }}">{{ $post->title }}</a></h2>
-                    <p class="publish-date">Published on: {{ \Carbon\Carbon::parse($post->publish_date)->format('M d, Y') }}</p>
-                </div>
-                
-                <div class="post-content">
-                  
-                    @if($post->image)
-                        <img src="{{ asset('storage/' . $post->image) }}" alt="Post image" class="post-image">
-                    @endif
+        <h1>Todos los Posts</h1>
+
+        {{-- Asegurar que $posts está definido --}}
+        @if (isset($posts) && $posts->isNotEmpty())
+            @foreach ($posts as $p)
+                <div class="post-card">
+                    <div class="post-header">
+                        <h3>{{ $p->title }}</h3>
+                        <p class="post-date">{{ $p->publish_date->format('d M Y H:i') }}</p>
+                    </div>
                     
-                    <p class="post-description">{{ $post->description }}</p>
-                </div>
-                
-                <div class="post-footer">
-                    <p>Likes: {{ $post->n_likes }}</p>
-                    <p>Comments: {{ $post->comments->count() }}</p> 
+                    <div class="post-body">
+                        <p>{{ $p->description }}</p>
+                        @if ($p->image)
+                            <img src="{{ $p->image }}" alt="Post image" class="post-image">
+                        @endif
+                    </div>
                     
-                   
-                    @if($post->belongs_to == auth()->user()->id)
-                        <form action="{{ route('post.destroy', $post->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="delete-button">Delete Post</button>
-                        </form>
-                    @endif
+                    <div class="post-footer">
+                        <span class="likes-count">{{ $p->n_likes }} Likes</span>
+    
+
+                        {{-- Enlace para ver el post completo --}}
+                        <a href="{{ route('posts.show', ['id' => $p->id]) }}" class="btn btn-primary">Ver Post</a>
+
+                        {{-- Eliminar post solo si pertenece al usuario logueado --}}
+                        @if (auth()->id() === $p->belongs_to)
+                            <form action="{{ route('posts.delete', ['id' => $p->id]) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
+                        @endif
+                    </div>
                 </div>
-            </div>
-        @endforeach
-
-        
-        <div class="create-post">
-            <h2>Create a New Post</h2>
-            <form action="{{ route('post.store') }}" method="POST">
-                @csrf
-                <label for="title">Title</label>
-                <input type="text" name="title" id="title" required>
-
-                <label for="description">Description</label>
-                <textarea name="description" id="description" required></textarea>
-
-                <label for="image">Image (optional)</label>
-                <input type="file" name="image" id="image">
-
-                <button type="submit" class="create-button">Create Post</button>
-            </form>
-        </div>
+                <hr>
+            @endforeach
+        @else
+            <p>No se han encontrado posts.</p>
+        @endif
     </div>
 </body>
+
 </html>

@@ -15,4 +15,8 @@ class Post extends Model
         'n_likes',
         'belongs_to'
     ];
+
+    protected $casts = [
+        'publish_date' => 'datetime',
+    ];
 }
