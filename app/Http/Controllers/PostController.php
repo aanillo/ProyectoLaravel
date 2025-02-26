@@ -5,13 +5,20 @@ namespace App\Http\Controllers;
 use App\Enums\Status;
 use App\Models\Post;
 use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
+
+    public function create()
+    {
+        // Devuelve la vista 'formpost'
+        return view('formpost');
+    }
     
-    public function insert(Request $request) {
+    public function store(Request $request) {
         $request->validate([
             'title' => 'required|max:20|min:3',
             'description' => 'required',
@@ -24,11 +31,10 @@ class PostController extends Controller
         $post->image = $request->image ?? null;
         $post->publish_date = now();
         $post->n_likes = 0;
-        $post->status = Status::PENDING->value;
         $post->belongs_to = Auth::id();
         $post->save();
 
-        return redirect()->route('posts.index'); // Redirigir a la lista de posts
+        return redirect()->route('home'); 
     }
 
     public function delete($id) {

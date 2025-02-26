@@ -5,10 +5,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function() {
     // Listar todos los posts
-    Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 
     // Insertar un nuevo post
-    Route::post('/posts', [PostController::class, 'insert'])->name('posts.insert');
+    Route::get('/posts/insert', [PostController::class, 'create'])->name('posts.insert');
+
+    Route::post('/posts/store', [PostController::class, 'store'])->name('posts.store');
 
     // Mostrar un post individual
     Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');

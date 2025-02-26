@@ -10,7 +10,7 @@
     <h1>APP</h1>
     <nav>
         <ul>
-            <li><a>Añadir post</a></li>
+            <li><a href="{{ route('posts.insert') }}">Añadir post</a></li>
             <li><a>Ver todos mis posts</a></li>
             <li><a>Eliminar mi cuenta</a></li>
         </ul>
