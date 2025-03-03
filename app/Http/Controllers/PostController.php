@@ -52,30 +52,15 @@ class PostController extends Controller
         $posts = Post::orderByDesc('publish_date')->get(); 
         return view('formposts', compact('posts'));
     }
-    
-    // En tu controlador PostController
 
-public function like($id)
-{
-    $post = Post::findOrFail($id);
-    $post->increment('n_likes'); // Incrementa el número de likes
-    return response()->json([
-        'n_likes' => $post->n_likes // Devuelve el nuevo número de likes
-    ]);
-}
 
-// app/Http/Controllers/PostController.php
+    public function likePost($id){
+        $post = Post::findOrFail($id);
+        $post->n_likes += 1;
+        $post->save();
 
-public function incrementLikes($id)
-{
-    $post = Post::findOrFail($id);
-    $post->n_likes += 1; 
-    $post->save(); 
-
-    return response()->json([
-        'n_likes' => $post->n_likes
-    ]);
-}
+        return redirect()->route('home'); 
+    }
 
 }
 

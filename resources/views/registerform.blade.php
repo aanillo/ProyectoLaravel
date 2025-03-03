@@ -7,14 +7,23 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{{ route('users.doRegister') }}" method="post">
+<header class="header">
+    <h1>APP</h1>
+    <nav>
+        <ul>
+            <li>Volver a login:</li>
+            <li><a href="{{ route('login') }}">Login</a></li>
+        </ul>
+    </nav>
+</header>
+    <form class="formRegister" action="{{ route('users.doRegister') }}" method="post">
         <h1>REGISTRO DE USUARIO</h1>
         @csrf
         <label for="name">Nombre:</label>
         <input type="text" name="name" id="name"><br>
         @error("name") <small>{{ $message }}</small> @enderror
         <br>
-        <label for="email">Email</label>
+        <label for="email">Email:</label>
         <input type="email" name="email" id="email"><br>
         @error("email") <small>{{ $message }}</small> @enderror
         <br>
@@ -26,8 +35,10 @@
         <input type="password" name="password_repeat" id="password_repeat">
         @error("password") <small>{{ $message }}</small> @enderror
         <br>
-        <button type="submit" value="Registrarse">Registrarse</button>
-        <button type="reset" value="Cancelar">Cancelar</button>
+        <br>
+        <button class="btnAceptar" type="submit" value="Registrarse">Registrarse</button>
+        <br>
+        <button class="btnCancelar" type="reset" value="Cancelar">Cancelar</button>
     </form>
 </body>
 </html>

@@ -8,6 +8,7 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/store', [PostController::class, 'store'])->name('posts.store');
     Route::get('/show', [PostController::class, 'show'])->name('posts.show');
     Route::delete('/{id}', [PostController::class, 'delete'])->name('posts.delete');
+    Route::put('/{id}/like', [PostController::class, 'likePost'])->name('posts.like');
 });
 
 

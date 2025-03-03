@@ -11,7 +11,7 @@
     <nav>
         <ul>
             <li><a href="{{ route('home') }}">Inicio</a></li>
-            <li><a>Ver todos mis posts</a></li>
+            <li><a href="{{ route('logout') }}">Cerrar sesión</a></li>
             <li><a>Eliminar mi cuenta</a></li>
         </ul>
     </nav>

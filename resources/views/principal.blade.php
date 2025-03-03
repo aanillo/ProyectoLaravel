@@ -12,13 +12,13 @@
         <ul>
             <li><a href="{{ route('posts.insert') }}">Añadir post</a></li>
             <li><a href="{{ route('logout') }}">Cerrar sesión</a></li>
-            <li><a>Eliminar mi cuenta</a></li>
+            <li><a href="{{ route('confirmDelete') }}">Eliminar mi cuenta</a></li>
         </ul>
     </nav>
 </header>
 <body>
     <div class="container">
-        <h1>Todos los Posts</h1>
+        <h1 class="main">Todos los Posts</h1>
 
         {{-- Asegurarse que $posts está definido --}}
         @if (isset($posts) && $posts->isNotEmpty())
@@ -39,12 +39,16 @@
                     
                     <div class="post-footer">
                         {{-- Botón de "like" con el número de likes dentro --}}
-                        <button class="btn btn-success" id="like-button-{{ $post->id }}" onclick="incrementLikes({{ $post->id }})">
-                            Likes: <span id="like-count-{{ $post->id }}">{{ $post->n_likes }}</span>
+                        <form class="formBtn" action="{{ route('posts.like', ['id' => $post->id]) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('PUT')
+                        <button type="submit" class="btnLike">
+                            Likes: {{ $post->n_likes }}
                         </button>
+                        </form>
 
                         {{-- Enlace para ver el post completo --}}
-                        <a href="{{ route('comments.show', ['id' => $post->id]) }}" class="btn btn-primary">Comentar</a>
+                        <a href="{{ route('comments.show', ['id' => $post->id]) }}" class="btnComment">Comentar</a>
 
                         {{-- Eliminar post solo si pertenece al usuario logueado --}}
                         @if (auth()->id() === $post->user_id)
@@ -62,21 +66,5 @@
             <p>No se han encontrado posts.</p>
         @endif
     </div>
-    <script>
-        // Función para incrementar los likes al hacer clic en el botón
-        function incrementLikes(postId) {
-            // Obtén el elemento del contador de likes
-            const likeCountElement = document.getElementById('like-count-' + postId);
-            
-            // Obtén el valor actual de likes y conviértelo en un número
-            let currentLikes = parseInt(likeCountElement.textContent);
-            
-            // Incrementa el número de likes
-            currentLikes += 1;
-            
-            // Actualiza el texto del contador de likes
-            likeCountElement.textContent = currentLikes;
-        }
-    </script>
 </body>
 </html>

@@ -15,3 +15,7 @@ Route::prefix('comments')->group(base_path('routes/comments/comment.php'));
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 });
+
+Route::get('/confirm-delete', function () {
+    return view('confirmdelete');
+})->name('confirmDelete');

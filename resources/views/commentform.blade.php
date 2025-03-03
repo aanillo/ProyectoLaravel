@@ -18,7 +18,7 @@
 </header>
 <body>
     <div class="container">
-        <h1>Comentar en el Post: {{ $post->title }}</h1>
+        <h1 class="main">Comentar en el Post: {{ $post->title }}</h1>
 
         <div class="post-card">
             <div class="post-header">
@@ -63,8 +63,9 @@
         <small>{{ $message }}</small>
     @enderror
     <br>
-    <button type="submit" class="btn btn-primary">Comentar</button>
-    <a href="{{ route('home') }}" class="btn btn-danger">Cancelar</a>
+    <button type="submit" class="btnAceptar">Comentar</button>
+    <br>
+    <a href="{{ route('home') }}" class="btnCancelar">Cancelar</a>
 </form>
     </div>
 </body>
