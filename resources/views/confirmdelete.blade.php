@@ -7,7 +7,10 @@
     <title>Confirmar eliminación</title>
 </head>
 <header class="header">
-    <h1>APP</h1>
+    <div class="datosHeader">
+        <img src="../img/logo.png" alt="imagen logo" width="100px" height="60px">
+        <h1>POSTSNAP</h1>
+    </div>
     <nav>
         <ul>
             <li>Volver a login:</li>
@@ -24,6 +27,12 @@
         <a class="volver" href="{{ route('home') }}">Cancelar</a>
     </form>
 </body>
+<footer>
+    <div class="datosHeader">
+        <img src="../img/logo.png" alt="imagen logo" width="200px" height="100px">
+        <h1>POSTSNAP</h1>
+    </div> 
+</footer>
 </html>
 
 

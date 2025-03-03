@@ -77,18 +77,17 @@ class UserController extends Controller
     }
 
 
-    public function deleteUser(Request $request)
-{
-    $user = Auth::user();
+    public function deleteUser(Request $request){
+        $user = Auth::user();
 
-    if ($user) {
-        $user->delete();
-        Auth::logout();
-        return redirect()->route('login')->with('status', 'Tu cuenta ha sido eliminada con éxito.');
+        if ($user) {
+            $user->delete();
+            Auth::logout();
+            return redirect()->route('login')->with('status', 'Tu cuenta ha sido eliminada con éxito.');
+        }
+
+        return redirect()->route('login')->withErrors(['error' => 'No se pudo eliminar tu cuenta.']);
     }
-
-    return redirect()->route('login')->withErrors(['error' => 'No se pudo eliminar tu cuenta.']);
-}
 
 
 

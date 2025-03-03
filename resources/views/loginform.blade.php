@@ -7,7 +7,10 @@
     <title>Document</title>
 </head>
 <header class="header">
-    <h1>APP</h1>
+    <div class="datosHeader">
+        <img src="../img/logo.png" alt="imagen logo" width="100px" height="60px">
+        <h1>POSTSNAP</h1>
+    </div>
     <nav>
         <ul>
             <li>¿Aún no estás registrado? Crea tu cuenta y disfruta de App</li>
@@ -33,4 +36,10 @@
         <button class="btnCancelar" type="reset" value="Cancelar">Cancelar</button>
     </form>
 </body>
+<footer>
+    <div class="datosHeader">
+        <img src="../img/logo.png" alt="imagen logo" width="200px" height="100px">
+        <h1>POSTSNAP</h1>
+    </div> 
+</footer>
 </html>

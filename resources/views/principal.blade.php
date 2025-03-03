@@ -7,7 +7,10 @@
     <title>Página principal</title>
 </head>
 <header class="header">
-    <h1>APP</h1>
+    <div class="datosHeader">
+        <img src="../img/logo.png" alt="imagen logo" width="100px" height="60px">
+        <h1>POSTSNAP</h1>
+    </div>
     <nav>
         <ul>
             <li><a href="{{ route('posts.insert') }}">Añadir post</a></li>
@@ -51,11 +54,11 @@
                         <a href="{{ route('comments.show', ['id' => $post->id]) }}" class="btnComment">Comentar</a>
 
                         {{-- Eliminar post solo si pertenece al usuario logueado --}}
-                        @if (auth()->id() === $post->user_id)
+                        @if (auth()->id() === $post->belongs_to)  {{-- Compara con 'belongs_to' --}}
                             <form action="{{ route('posts.delete', ['id' => $post->id]) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                <button type="submit" class="btnEliminarPost">Eliminar</button>
                             </form>
                         @endif
                     </div>
@@ -67,4 +70,10 @@
         @endif
     </div>
 </body>
+<footer>
+    <div class="datosHeader">
+        <img src="../img/logo.png" alt="imagen logo" width="200px" height="100px">
+        <h1>POSTSNAP</h1>
+    </div> 
+</footer>
 </html>

@@ -37,14 +37,14 @@ class PostController extends Controller
         return redirect()->route('home'); 
     }
 
-    public function delete($id) {
-        $post = Post::findOrFail($id);
 
+    public function delete($id){
+        $post = Post::findOrFail($id);
         if ($post->belongs_to === Auth::id()) {
             $post->delete();
         }
 
-        return redirect()->route('home'); 
+        return redirect()->route('home');
     }
 
 

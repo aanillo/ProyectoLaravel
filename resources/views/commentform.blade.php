@@ -7,7 +7,10 @@
     <title>Comentar en el Post</title>
 </head>
 <header class="header">
-    <h1>APP</h1>
+    <div class="datosHeader">
+        <img src="../img/logo.png" alt="imagen logo" width="100px" height="60px">
+        <h1>POSTSNAP</h1>
+    </div>
     <nav>
         <ul>
             <li><a href="{{ route('home') }}">Inicio</a></li>
@@ -38,10 +41,10 @@
 @if ($comments->isNotEmpty())
     @foreach ($comments as $comment)
         <div class="comment-card">
-            @if ($comment->user) <!-- Verifica si el usuario está presente -->
+            @if ($comment->user) 
                 <h4>{{ $comment->user->name }}:</h4>
             @else
-                <h4>Usuario eliminado:</h4> <!-- Mensaje alternativo si el usuario no existe -->
+                <h4>Usuario eliminado:</h4> 
             @endif
             <p>{{ $comment->comment }}</p>
             <p><small>{{ $comment->created_at->format('d M Y H:i') }}</small></p>
@@ -69,4 +72,10 @@
 </form>
     </div>
 </body>
+<footer>
+    <div class="datosHeader">
+        <img src="../img/logo.png" alt="imagen logo" width="200px" height="100px">
+        <h1>POSTSNAP</h1>
+    </div> 
+</footer>
 </html>
