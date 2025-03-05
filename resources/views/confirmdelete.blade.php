@@ -22,6 +22,8 @@
     <form class="formEliminar" action="{{ route('deleteUser') }}" method="POST">
         @csrf
         <h1>¿Estás seguro de que deseas eliminar tu cuenta?</h1>
+        <h2>Siempre podrás volver a registrarte. Esperamos volver a verte pronto por POSTNAP</h2>
+        <br>
         <button class="btnEliminar" type="submit">Sí, eliminar mi cuenta</button>
         <br>
         <a class="volver" href="{{ route('home') }}">Cancelar</a>

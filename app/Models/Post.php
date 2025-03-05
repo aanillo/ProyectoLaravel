@@ -20,9 +20,14 @@ class Post extends Model
         'publish_date' => 'datetime',
     ];
 
-    // En el modelo Post.php
+    
     public function user(){
         return $this->belongsTo(User::class, 'belongs_to');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
 }

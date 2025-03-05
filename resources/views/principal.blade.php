@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite(['resources/css/users.css'])
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Página principal</title>
 </head>
 <header class="header">
@@ -46,9 +47,14 @@
                         @csrf
                         @method('PUT')
                         <button type="submit" class="btnLike">
-                            Likes: {{ $post->n_likes }}
+                        <i class="fas fa-thumbs-up"></i> {{ $post->n_likes }}
                         </button>
                         </form>
+
+                        {{-- Mostrar el número de comentarios --}}
+                        <button class="btnLike">
+                        <i class="fas fa-comment"></i> {{ $post->comments->count() }}
+                        </button>
 
                         {{-- Enlace para ver el post completo --}}
                         <a href="{{ route('comments.show', ['id' => $post->id]) }}" class="btnComment">Comentar</a>
