@@ -148,7 +148,7 @@ h1 {
 }
 
 .header nav ul li a:hover {
-    transform: scale(1.2);
+    transform: scale(1.2); 
 }
 
 .datosHeader {
@@ -164,11 +164,13 @@ h1 {
     flex-direction: column; 
     align-items: center;
     width: 450px;
-    height: 550px;
+    height: 600px;
     padding: 20px 20px 10px 10px;
     border-radius: 2%;
     justify-content: center;
     margin: 0; 
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 
@@ -180,11 +182,13 @@ h1 {
     flex-direction: column; 
     align-items: center;
     width: 450px;
-    height: 400px;
+    height: 450px;
     padding: 20px 20px 10px 10px;
     border-radius: 2%;
     justify-content: center;
-    margin: 0; 
+    margin: 0;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 .formPost {
@@ -200,6 +204,8 @@ h1 {
     border-radius: 2%;
     justify-content: center;
     margin: 0; 
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 input {
@@ -305,6 +311,8 @@ label {
     border-radius: 2%;
     justify-content: center;
     margin: 0; 
+    margin-top: 80px;
+    margin-bottom: 80px;
 }
 
 .btnEliminar {
@@ -341,9 +349,10 @@ label {
 footer {
     width: 100%;
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
+    justify-content: center; 
+    align-items: center; 
     background-color: rgb(52, 52, 242);
     color: white;
-    padding: 20px 0; /* Espaciado opcional */
+    padding: 20px 0; 
+    margin-top: auto; 
 }

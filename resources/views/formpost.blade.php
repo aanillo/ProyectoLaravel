@@ -37,6 +37,7 @@
     <input type="text" name="image" id="image" placeholder="https://example.com/imagen.jpg">
     @error("image") <small>{{ $message }}</small> @enderror
     <br>
+    <br>
     <button class="btnAceptar" type="submit">Agregar post</button>
     <br>
     <button class="btnCancelar" type="reset">Cancelar</button>

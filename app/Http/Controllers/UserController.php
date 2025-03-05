@@ -16,7 +16,7 @@ class UserController extends Controller
         return view('loginform');
     }
 
-    // Procesar login
+   
     public function doLogin(Request $request)
 {
     $validator = Validator::make($request->all(), [
@@ -31,22 +31,19 @@ class UserController extends Controller
     $credentials = $request->only('email', 'password');
 
     if (Auth::attempt($credentials)) {
-        // Redirige a la URL a la que intentaba acceder antes o, si no hay, a /home
         return redirect()->intended('/home');
     }
 
     return redirect()->route('login')->withErrors(['credentials' => 'Credenciales incorrectas'])->withInput();
 }
 
-    // Mostrar formulario de registro
-    public function showRegister()
-    {
+   
+    public function showRegister(){
         return view('registerform');
     }
 
-    // Procesar registro
-    public function doRegister(Request $request)
-    {
+    
+    public function doRegister(Request $request){
         $validator = Validator::make($request->all(), [
             "name" => "required|string|max:20",
             "email" => "required|email:rfc,dns|unique:users,email",

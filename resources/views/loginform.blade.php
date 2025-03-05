@@ -21,6 +21,7 @@
 <body>
     <form class="formLogin" action="{{ route('users.doLogin') }}" method="post">
         <h1>LOGIN</h1>
+        <h2>POSTNAP, la app de los amantes de la fotografía</h2>
         @csrf
         <label for="email">Email</label>
         <input type="email" name="email" id="email"><br>

@@ -21,6 +21,7 @@
 </header>
     <form class="formRegister" action="{{ route('users.doRegister') }}" method="post">
         <h1>REGISTRO DE USUARIO</h1>
+        <h2>POSTNAP, la app de los amantes de la fotografía</h2>
         @csrf
         <label for="name">Nombre:</label>
         <input type="text" name="name" id="name"><br>
