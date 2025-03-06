@@ -14,7 +14,6 @@ class PostController extends Controller
 
     public function create()
     {
-        // Devuelve la vista 'formpost'
         return view('formpost');
     }
     
@@ -23,6 +22,12 @@ class PostController extends Controller
             'title' => 'required|max:20|min:3',
             'description' => 'required',
             'image' => 'nullable|url'
+        ], [
+            'title.required' => 'El título es obligatorio.',
+            'title.max' => 'El título no puede tener más de 20 caracteres.',
+            'title.min' => 'El título debe tener al menos 3 caracteres.',
+            'description.required' => 'La descripción es obligatoria.',
+            'image.url' => 'La imagen debe ser una URL válida.'
         ]);
 
         $post = new Post();

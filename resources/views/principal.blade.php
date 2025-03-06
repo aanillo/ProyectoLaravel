@@ -9,7 +9,7 @@
 </head>
 <header class="header">
     <div class="datosHeader">
-        <img src="../img/logo.png" alt="imagen logo" width="100px" height="60px">
+        <img src="../public/img/logo.png" alt="imagen logo" width="100px" height="60px">
         <h1>POSTSNAP</h1>
     </div>
     <nav>
@@ -78,7 +78,7 @@
 </body>
 <footer>
     <div class="datosHeader">
-        <img src="../img/logo.png" alt="imagen logo" width="200px" height="100px">
+        <img src="../public/img/logo.png" alt="imagen logo" width="200px" height="100px">
         <h1>POSTSNAP</h1>
     </div> 
 </footer>
