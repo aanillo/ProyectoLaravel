@@ -16,4 +16,6 @@ class HomeController extends Controller
         return view('principal', compact('posts', 'user'));
     }
 
+    
+
 }

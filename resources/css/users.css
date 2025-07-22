@@ -86,6 +86,7 @@ h1 {
     border-radius: 5px;
     font-weight: bold;
     display: inline-block;
+    cursor: pointer;
 }
 
 
@@ -242,6 +243,7 @@ label {
     color: black;
     font-size: large;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .btnAceptar:hover {
@@ -257,6 +259,7 @@ label {
     font-size: large;
     border-radius: 5px;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .btnCancelar:hover {
@@ -280,6 +283,7 @@ label {
     color: white;
     font-size: large;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .btnLike {
@@ -291,6 +295,7 @@ label {
     color: black;
     font-size: large;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .main {
